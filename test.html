@@ -77,8 +77,8 @@ var query = {
 
 xively.datastream.history( "2017146907", "TEMPERATURE", query, loadData);  
 data1 =series;
-xively.datastream.history( "2017146907", "DIMITRIS", query, loadData);  
-data2 =series;
+//xively.datastream.history( "2017146907", "DIMITRIS", query, loadData);  
+//data2 =series;
 
 
 
@@ -87,11 +87,11 @@ function loadData(data) {
 }
 
 
-  drawGraph(data1, data2);
+  drawGraph(data1);
 
 
 
-function drawGraph(Data1,Data2) {
+function drawGraph(Data1) {
   var graph = new Rickshaw.Graph( {
     element: document.querySelector("#chart"),
     width: 640,
@@ -102,11 +102,6 @@ function drawGraph(Data1,Data2) {
         data: Data1,
         color: '#6060c0',
         name: 'data1'
-      },
-      {
-        data: Data2,
-        color: '#6060c0',
-        name: 'data2'
       }
     ]
   } );
