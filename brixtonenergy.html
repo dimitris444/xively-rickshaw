@@ -75,7 +75,7 @@ var query = {
   limit: 1000,
 };
 
-xively.datastream.history( "2071969001", "Solar_meteo", query, loadData);  
+xively.datastream.history( "2071969001", "Solar__meteo", query, loadData);  
 
 function loadData(data) {  
   var unit = data.unit.label;
