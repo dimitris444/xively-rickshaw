@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
     <script src="http://d23cj0cdvyoxg0.cloudfront.net/xivelyjs-1.0.3.min.js"></script>  
 
-    <title>Brite Energy Solar 1</title>
+    <title>Brixton Energy Solar 1</title>
   </head>
 
   <body>
@@ -29,7 +29,7 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <h1 id="project_title">Brite Energy Solar 1</h1>
+          <h1 id="project_title">Brixton Energy Solar 1</h1>
 h2>
         </header>
     </div>
@@ -76,22 +76,20 @@ var query = {
 };
 
 xively.datastream.history( "2017146907", "TEMPERATURE", query, loadData);  
-data1 =series;
-//xively.datastream.history( "2017146907", "DIMITRIS", query, loadData);  
-//data2 =series;
-
-
 
 function loadData(data) {  
-   var series = [];
+  var unit = data.unit.label;
+  var series = [];
+  var filtedData = data.datapoints;
+  for (var i=0; i < filtedData.length; i++ ) {
+    var date = moment(filtedData[i].at);
+    var value = parseInt(filtedData[i].value);
+    series[i] = {x: date.unix(), y: value};
+  }
+  drawGraph(series, unit);
 }
 
-
-  drawGraph(series);
-
-
-
-function drawGraph(Data1) {
+function drawGraph(data, unit) {
   var graph = new Rickshaw.Graph( {
     element: document.querySelector("#chart"),
     width: 640,
@@ -99,9 +97,9 @@ function drawGraph(Data1) {
     renderer: 'line',
     series: [
       {
-        data: Data1,
+        data: data,
         color: '#6060c0',
-        name: 'data1'
+        name: unit
       }
     ]
   } );
