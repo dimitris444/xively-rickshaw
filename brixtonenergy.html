@@ -60,7 +60,7 @@ h2>
 <script>
 
 // Set your API key first  
-xively.setKey( "ZKPRcyV1nMJUMlifIlWG9nWxcsO95Hy8hdCM96BSg92cmHGr" );  
+xively.setKey( "miO8AVOmx4u9243LsGM0TUJ4H1eGCyLK7aFh0xxWN2hLONCY" );  
 
 var startOfYesterday = moment().subtract("day", 1).startOf('day');
 var endOfYesterday = moment().subtract("hour", 3).startOf('day');
@@ -75,7 +75,7 @@ var query = {
   limit: 1000,
 };
 
-xively.datastream.history( "2071969001", "Solar__meteo", query, loadData);  
+xively.datastream.history( "2017146907", "TEMPERATURE", query, loadData);  
 
 function loadData(data) {  
   var unit = data.unit.label;
